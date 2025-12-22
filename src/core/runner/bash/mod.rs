@@ -37,7 +37,6 @@ impl Runner for BashRunner {
                 .and_then(|v| v.as_i64())
                 .unwrap_or(0) as i32;
 
-            // Команда может быть пустой
             let command = self.load.command.first()
                 .map(|s| s.as_str())
                 .unwrap_or("");
