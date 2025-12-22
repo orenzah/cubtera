@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/cubtera/cubtera/compare/v1.1.0...v1.1.1) (2025-12-22)
+
+
+### Bug Fixes
+
+* **ci:** change macos runners OS version ([78354de](https://github.com/cubtera/cubtera/commit/78354deb4b327ed6b0f356dc7d96226e04d312e9))
+
 ## [1.1.0](https://github.com/cubtera/cubtera/compare/v1.0.15...v1.1.0) (2025-12-22)
 
 
