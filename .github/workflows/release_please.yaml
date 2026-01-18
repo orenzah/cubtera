@@ -38,6 +38,7 @@ jobs:
       matrix:
         name: [
             linux,
+            linux-arm64,
             macos,
             macos-arm64
         ]
@@ -46,6 +47,11 @@ jobs:
             os: ubuntu-22.04
             target: x86_64-unknown-linux-musl
             asset_name: cubtera-linux-intel
+
+          - name: linux-arm64
+            os: ubuntu-22.04
+            target: aarch64-unknown-linux-musl
+            asset_name: cubtera-linux-arm64
 
           - name: macos
             os: macos-15-intel
@@ -183,6 +189,7 @@ jobs:
           LINUX_INTEL_SHA256_ZIP=$(curl -sL $BASE_URL/cubtera-linux-intel.zip | shasum -a 256 | cut -d ' ' -f 1)
           MAC_INTEL_SHA256_ZIP=$(curl -sL $BASE_URL/cubtera-darwin-intel.zip | shasum -a 256 | cut -d ' ' -f 1)
           MAC_AARCH64_SHA256_ZIP=$(curl -sL $BASE_URL/cubtera-darwin-aarch64.zip | shasum -a 256 | cut -d ' ' -f 1)
+          LINUX_ARM64_SHA256_ZIP=$(curl -sL $BASE_URL/cubtera-linux-arm64.zip | shasum -a 256 | cut -d ' ' -f 1)
 
           cat << EOF > payload.json
           {
@@ -191,7 +198,8 @@ jobs:
               "version": "${VERSION}",
               "mac_intel_zip_sha": "${MAC_INTEL_SHA256_ZIP}",
               "mac_aarch_zip_sha": "${MAC_AARCH64_SHA256_ZIP}",
-              "linux_intel_zip_sha": "${LINUX_INTEL_SHA256_ZIP}"
+              "linux_intel_zip_sha": "${LINUX_INTEL_SHA256_ZIP}",
+              "linux_arm64_zip_sha": "${LINUX_ARM64_SHA256_ZIP}"
             }
           }
           EOF
